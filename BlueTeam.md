@@ -12,7 +12,7 @@ The following machines were identified on the network:
 
 **Kali**
 - Operating System: 
-    -Debian Kali 5.4.0
+    - Debian Kali 5.4.0
 - Purpose: 
     - The Penetration Tester
 - IP Address: 
@@ -64,6 +64,7 @@ This scan identifies the services below as potential points of entry:
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
 **Excessive HTTP Errors**
+
 Excessive HTTP Errors is implemented as follows:
 
 `WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE LAST 5 minutes`
@@ -80,6 +81,7 @@ Excessive HTTP Errors is implemented as follows:
 ![Excessive HTTP Errors alert logs](/Images/excessive-http-error-logs.png "Excessive HTTP Errors alert logs")
 
 **HTTP Request Size Monitor**
+
 HTTP Request Size Monitor is implemented as follows:
 
 `WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1 minute`
@@ -96,6 +98,7 @@ HTTP Request Size Monitor is implemented as follows:
 ![HTTP Request Size Monitor alert logs](/Images/http-request-size-monitor-logs.png "HTTP Request Size Monitor alert logs")
 
 **CPU Usage Monitor**
+
 CPU Usage Monitor is implemented as follows:
 
 `WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR THE LAST 5 minutes`
